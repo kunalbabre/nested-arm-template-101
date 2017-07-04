@@ -1,6 +1,4 @@
-# Working with Nested ARM Templates
-
-This article discusses an alternative approach to working with nexted templates.
+# Alternative approach to working with nested ARM templates
 
 Using Azure Resource Manager templates (JSON format) is an easy and reliable way to deploy resources on Azure. It allows for codifying the infrastructure and version controlling every change to it a.k.a. Infrastructure-as-Code (IaC).
 
