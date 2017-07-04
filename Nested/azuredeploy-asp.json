@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sp-asp-name": {
+      "type": "string"
+    },
+    "sp-location": {
+      "type": "string"
+    }   
+  },
+  "variables": {
+   
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-09-01",
+      "name": "[parameters('sp-asp-name')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('sp-location')]",
+      "properties": {
+        "name": "[parameters('sp-asp-name')]",
+        "workerSize": 0,
+        "workerSizeId": 0,
+        "numberOfWorkers": "1",
+        "hostingEnvironment": "",
+        "location": "[parameters('sp-location')]"
+      },
+      "sku": {
+          "Tier": "Free",
+          "Name": "F1"
+      },
+      "tags": {
+        "displayName": "[parameters('sp-asp-name')]"
+      }
+    }
+  ],
+  "outputs": {
+    "so-asp-name": {
+      "type": "string",
+      "value": "[parameters('sp-asp-name')]"
+    }
+  }
+}

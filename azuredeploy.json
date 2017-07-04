@@ -1,0 +1,78 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+
+    "sp-location": {
+      "type": "string"
+    },
+   
+    "sp-baseURI":{
+        "type": "string",
+        "minLength": 5
+    },
+
+    "sp-uniqueString":{
+        "type": "string",
+        "minLength": 2
+    }
+  },
+
+  "variables": {
+    "sv-baseURI": "[concat(parameters('sp-baseURI'),'/Nested')]",
+   
+    "sv-asp-template":  "[concat(variables('sv-baseURI'),'/azuredeploy-asp.json')]",
+    "sv-site-template": "[concat(variables('sv-baseURI'),'/azuredeploy-site.json')]",
+    
+    "sv-asp-name":"[concat(parameters('sp-uniqueString'),'-test-asp-name')]",
+    "sv-site-name":"[concat(parameters('sp-uniqueString'),'-test-site-name')]"
+
+  },
+
+  "resources": [
+
+    //Deploy ASP
+    {
+      "name": "asp-template",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "dependsOn": [  ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('sv-asp-template')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "sp-asp-name": { "value": "[variables('sv-asp-name')]" },
+          "sp-location": { "value": "[parameters('sp-location')]" }
+        }
+
+      }
+    },
+    //Deploy Site 
+    {
+      "name": "site-template",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "dependsOn": [ 
+        "[resourceId('Microsoft.Resources/deployments','asp-template')]"
+        ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('sv-site-template')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "sp-location": { "value": "[parameters('sp-location')]" },
+          "sp-asp-name": { "value": "[variables('sv-asp-name')]" },
+          "sp-site-name": { "value": "[variables('sv-site-name')]" }
+        }
+      }
+    }
+  ],
+
+  "outputs": {
+  }
+}
