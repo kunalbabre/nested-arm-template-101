@@ -1,4 +1,4 @@
-**Working with Nested ARM Templates**
+# Working with Nested ARM Templates
 
 Azure Resource Manager templates (JSON format) are easy and reliable way to deploy resources on Azure. It allows you to codify your infrastructure and version control every change to it aka Infrastructure-as-Code or IaC in short.
 
@@ -11,7 +11,7 @@ First and simplest option is to host it on public git repository and hard refere
 
 There is also a third way, very handy when wanting to experiment, learn and test changes quickly without doing first two.
 
-**Preparation**
+## Preparation (one-time)
 
 - Install Node.js (if you don’t have it already!) - https://nodejs.org/en/download/
     
@@ -23,7 +23,7 @@ There is also a third way, very handy when wanting to experiment, learn and test
 
 - Download and unzip ngrok on your local machine let’s say c:\ngrok
  
-**Running the Script**
+## Running the Scripts
 
 1. Download sample nested scripts from https://github.com/kunalbabre/nested-arm-template-101 into `c:\nested-arm-template-101`
 2. Open `c:\nested-arm-template-101` folder in command prompt 
