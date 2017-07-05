@@ -2,7 +2,7 @@
 
 Using Azure Resource Manager templates (JSON format) is an easy and reliable way to deploy resources on Azure. It allows for codifying the infrastructure and version controlling every change to it a.k.a. Infrastructure-as-Code (IaC).
 
-A single template can deploy hundreds of resources, however there are limits on the physical size and parameters (see [Template limits section](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)). From a maintainability perspective, it may not always be a good idea to build one gigantic template. There is a lot of good material written on the [Azure website](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-template-best-practices#single-template-vs-nested-templates).
+A single template can deploy hundreds of resources, however there are limits on the physical size and parameters (see [Template limits section](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)). From a maintainability perspective, it may not always be a good idea to build one gigantic template. There is a lot of [good material](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World%20Class%20ARM%20Templates%20-%20Considerations%20and%20Proven%20Practices.pdf) written on the [single vs nested](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-template-best-practices#single-template-vs-nested-templates) templates.
 
 Now that we have decided to build a nested template and probably quickly scrambled an example together, we might next stumble upon how to run this sample, since references to nested templates are required to be accessible publicly. 
 
